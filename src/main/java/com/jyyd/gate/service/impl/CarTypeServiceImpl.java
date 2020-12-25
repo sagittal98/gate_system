@@ -22,6 +22,7 @@ public class CarTypeServiceImpl implements CarTypeService {
 
     @Contract(pure = true)
     public CarTypeServiceImpl(CarTypeMapper carTypeMapper) {
+
         this.carTypeMapper = carTypeMapper;
     }
 
