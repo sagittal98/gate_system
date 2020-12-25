@@ -17,6 +17,14 @@ public interface CarTypeService {
      */
     Result<List<DbCarType>> selectAllCarType();
 
+    /**
+     * 通过cardIds集合 修改车辆类型状态
+     * @param carTypeIds 目标id
+     * @param carStatus 修改状态
+     * @return  返回结果
+     */
+    Result<Boolean> updateCarTypeByIds( List<Integer> carTypeIds,String carStatus);
+
 
 
 }

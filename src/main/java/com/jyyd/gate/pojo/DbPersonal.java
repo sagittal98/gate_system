@@ -4,24 +4,25 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class DbPersonal implements Serializable {
+    /* 人事id */
     private Long perId;
-
+    /* 姓名 */
     private String perName;
-
+    /* 性别 */
     private String perSex;
-
+    /* 出生 */
     private Date perBirth;
-
+    /* 身份证 */
     private String perIdcard;
-
+    /* 婚否 */
     private String perMarriage;
-
+    /* 职位 */
     private String perJobNumber;
-
+    /* 电话 */
     private String perPhone;
-
+    /* 座机 */
     private String perSpecialPhone;
-
+    /* 创建时间 */
     private Date perCreateTime;
 
 

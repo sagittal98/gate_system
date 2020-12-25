@@ -32,4 +32,10 @@ public class CarTypeServiceImpl implements CarTypeService {
         System.out.println(dbCarTypes.size());
         return Result.success(dbCarTypes, ResultStateEnums.SUCCESS);
     }
+
+    @Override
+    public Result<Boolean> updateCarTypeByIds(List<Integer> carTypeIds, String carStatus) {
+        carTypeMapper.updateCarTypeByIds(carTypeIds,carStatus);
+        return Result.success(true,ResultStateEnums.SUCCESS);
+    }
 }

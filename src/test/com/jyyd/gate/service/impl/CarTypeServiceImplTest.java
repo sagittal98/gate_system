@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,8 +28,13 @@ class CarTypeServiceImplTest {
     @Test
     void selectAllCarType() {
 
-        Result<List<DbCarType>> listResult = carTypeService.selectAllCarType();
-        System.out.println(listResult);
-
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        String carStatus = "1";
+        Result<Boolean> booleanResult = carTypeService.updateCarTypeByIds(list, carStatus);
+        System.out.println(booleanResult);
     }
 }
