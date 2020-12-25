@@ -1,6 +1,10 @@
 package com.jyyd.gate.dao;
 
 import com.jyyd.gate.model.UserModel;
+import com.jyyd.gate.pojo.CorUser;
+import com.jyyd.gate.pojo.DbPersonal;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -52,7 +56,7 @@ public interface UserLoginMapper {
             "#{corUser.addId}" +
             ")")
     @Options(useGeneratedKeys = true,keyProperty = "corUser.corUserId",keyColumn = "cor_user_id")
-    void insertUser(@Param("corUser")CorUser corUser);
+    void insertUser(@Param("corUser") CorUser corUser);
 
 
 }
