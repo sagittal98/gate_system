@@ -16,7 +16,12 @@ public enum ResultStateEnums {
     // 账户密码错误
     ACCOUNT_PASSWORD_WRONG(4002, "账户密码错误"),
     // 登录成功
-    LOGIN_SUCCESSFUL(4003, "登录成功");
+    LOGIN_SUCCESSFUL(4003, "登录成功"),
+    // 车牌登记成功
+    LICENCE_REGISTER_SUCCESSFUL(4004,"车牌登记成功"),
+    // 账户注册成功
+    ACCOUNT_REGISTER_SUCCESSFUL(4006,"账户注册成功")
+    ;
 
 
     private int state;

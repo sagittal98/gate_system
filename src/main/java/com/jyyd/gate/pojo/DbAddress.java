@@ -1,6 +1,11 @@
 package com.jyyd.gate.pojo;
 
+import com.jyyd.gate.model.LicenceModel;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class DbAddress implements Serializable {
     private Long addId;
@@ -13,6 +18,21 @@ public class DbAddress implements Serializable {
 
     private String addInformatino;
 
+    @Contract(pure = true)
+    public DbAddress() {
+    }
+
+    public DbAddress(@NotNull LicenceModel licenceModel) {
+        String addressStr = licenceModel.getAddress();
+        String substring = addressStr.substring(1, addressStr.length() - 1);
+        String[] split = substring.split(",");
+        System.out.println(Arrays.toString(split));
+
+        this.country = split[0];
+        this.province = split[1];
+        this.city = split[2];
+        this.addInformatino = split[3];
+    }
 
     @Override
     public String toString() {

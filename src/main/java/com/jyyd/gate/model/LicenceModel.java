@@ -27,6 +27,10 @@ public class LicenceModel implements Serializable {
     private String perPhone;
     // 家庭住址
     private String address;
+    // 用户id
+    private Long corUserId;
+    // 车辆备注
+    private String carRemark;
 
     @Override
     public String toString() {
@@ -48,7 +52,27 @@ public class LicenceModel implements Serializable {
                 perPhone + '\"' +
                 ",\"address\":\"" +
                 address + '\"' +
+                ",\"corUserId\":" +
+                corUserId +
+                ",\"carRemark\":\"" +
+                carRemark + '\"' +
                 '}';
+    }
+
+    public String getCarRemark() {
+        return carRemark;
+    }
+
+    public void setCarRemark(String carRemark) {
+        this.carRemark = carRemark;
+    }
+
+    public Long getCorUserId() {
+        return corUserId;
+    }
+
+    public void setCorUserId(Long corUserId) {
+        this.corUserId = corUserId;
     }
 
     public String getLicNumber() {

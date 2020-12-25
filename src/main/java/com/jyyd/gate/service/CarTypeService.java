@@ -25,6 +25,4 @@ public interface CarTypeService {
      */
     Result<Boolean> updateCarTypeByIds( List<Integer> carTypeIds,String carStatus);
 
-
-
 }
