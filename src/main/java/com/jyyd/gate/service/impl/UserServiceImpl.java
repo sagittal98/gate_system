@@ -2,16 +2,15 @@ package com.jyyd.gate.service.impl;
 
 import com.jyyd.gate.common.enums.ResultStateEnums;
 import com.jyyd.gate.dao.AddressMapper;
-import com.jyyd.gate.dao.UserLoginMapper;
+import com.jyyd.gate.dao.UserMapper;
 import com.jyyd.gate.model.Result;
 import com.jyyd.gate.model.UserModel;
 import com.jyyd.gate.pojo.CorUser;
 import com.jyyd.gate.pojo.DbAddress;
 import com.jyyd.gate.pojo.DbPersonal;
-import com.jyyd.gate.service.UserLoginService;
+import com.jyyd.gate.service.UserService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,17 +19,20 @@ import org.springframework.stereotype.Service;
  * @Create 2020-12-25
  */
 @Service
-public class UserLoginServiceImpl implements UserLoginService {
+public class UserServiceImpl implements UserService {
 
-    private final UserLoginMapper userLoginMapper;
+    private final UserMapper userMapper;
     private final AddressMapper addressMapper;
 
     @Contract(pure = true)
-    public UserLoginServiceImpl(UserLoginMapper userLoginMapper, AddressMapper addressMapper) {
-        this.userLoginMapper = userLoginMapper;
+    public UserServiceImpl(UserMapper userMapper, AddressMapper addressMapper) {
+        this.userMapper = userMapper;
         this.addressMapper = addressMapper;
     }
 
+    /*
+    * 用户登陆
+    * */
     @Override
     public Result<UserModel> selectUser(@NotNull UserModel userModel) {
         /* 登陆操作
@@ -38,7 +40,7 @@ public class UserLoginServiceImpl implements UserLoginService {
         *  2. 先判断用户是否存在？ 查询的结果要包含密码
         *  3. 如果存在，就判断密码是否匹配
         *  */
-        UserModel getUser = userLoginMapper.selectUser(userModel.getPerName());
+        UserModel getUser = userMapper.selectUser(userModel.getPerName());
         System.out.println(getUser);
         if (getUser == null){
             // 用户为空，不存在
@@ -56,18 +58,31 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
 
+    /*
+    * 修改密码
+    * */
+    @Override
+    public Result<Boolean> updatePassWord(String passWord, Long id) {
+        userMapper.updatePassword(passWord,id);
+        return Result.success(true, ResultStateEnums.CHANGE_SUCCESSFUL);
+    }
+
+
+    /*
+    * 用户注册
+    * */
     @Override
     public Result<Boolean> insertUser(DbPersonal personal, DbAddress address) {
         /*  注册用户流程 */
         // 1. 先插入用户数据
-        userLoginMapper.insertPersonal(personal);
+        userMapper.insertPersonal(personal);
         Long perId = personal.getPerId();
         // 2. 如果地址存在，插入家庭地址
         addressMapper.insertAddress(address);
         Long addId = address.getAddId();
         // 3. 将用户和地址进行关联
         CorUser corUser = new CorUser(perId,addId);
-        userLoginMapper.insertUser(corUser);
+        userMapper.insertUser(corUser);
         Long userId = corUser.getCorUserId();
         System.out.println(perId + addId + userId);
         return Result.success(true,ResultStateEnums.ACCOUNT_REGISTER_SUCCESSFUL);

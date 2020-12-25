@@ -3,19 +3,15 @@ package com.jyyd.gate.dao;
 import com.jyyd.gate.model.UserModel;
 import com.jyyd.gate.pojo.CorUser;
 import com.jyyd.gate.pojo.DbPersonal;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
-import java.util.List;
 
 /**
  * @Author:yangbiao
  * @Describe 查询用户
  * @Create 2020-12-25
  */
-public interface UserLoginMapper {
+public interface UserMapper {
 
     /**
      * 查询用户及密码
@@ -25,6 +21,12 @@ public interface UserLoginMapper {
             "from db_personal as per , cor_user as u where " +
             "per.per_id = u.per_id  and per.per_name = #{perName}")
     UserModel selectUser(@Param("perName") String perName);
+
+    /*
+     * 修改用户密码
+     * */
+    @Update("update cor_user set PASSWORD=#{passWord} where cor_user_id=#{id}")
+    void updatePassword(@Param("passWord") String passWord,@Param("id") Long id);
 
 
     /**

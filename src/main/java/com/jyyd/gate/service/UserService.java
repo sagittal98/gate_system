@@ -5,19 +5,23 @@ import com.jyyd.gate.model.UserModel;
 import com.jyyd.gate.pojo.DbAddress;
 import com.jyyd.gate.pojo.DbPersonal;
 
-import java.util.List;
 
 /**
  * @Author:yangbiao
  * @Describe
  * @Create 2020-12-25
  */
-public interface UserLoginService {
+public interface UserService {
     /*
     * 查询用户是否存在
     * @Return 一个User对象
     * */
     Result<UserModel> selectUser(UserModel userModel);
+
+    /*
+    * 修改用户密码
+    * */
+    Result<Boolean> updatePassWord(String passWord,Long id);
 
     /**
      * 注册用户
