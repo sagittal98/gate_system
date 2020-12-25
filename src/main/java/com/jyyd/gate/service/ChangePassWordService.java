@@ -11,5 +11,5 @@ import java.util.List;
  * @Create 2020-12-25
  */
 public interface ChangePassWordService {
-    Result<Boolean> changePassWord(String passWord,Long id);
+    Result<Boolean> updatePassWord(String passWord,Long id);
 }

@@ -5,6 +5,7 @@ import com.jyyd.gate.dao.ChangePassWordMapper;
 import com.jyyd.gate.model.Result;
 import com.jyyd.gate.pojo.CorUser;
 import com.jyyd.gate.service.ChangePassWordService;
+import org.jetbrains.annotations.Contract;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +20,13 @@ public class ChangePassWordServiceImpl implements ChangePassWordService {
 
     private final ChangePassWordMapper changePassWordMapper;
 
+    @Contract(pure = true)
     public ChangePassWordServiceImpl(ChangePassWordMapper changePassWordMapper) {
         this.changePassWordMapper = changePassWordMapper;
     }
 
     @Override
-    public Result<Boolean> changePassWord(String password,Long id) {
+    public Result<Boolean> updatePassWord(String password,Long id) {
         changePassWordMapper.updatePassword(password,id);
         return Result.success(true, ResultStateEnums.CHANGE_SUCCESSFUL);
     }
