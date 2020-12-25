@@ -3,6 +3,7 @@ package com.jyyd.gate.dao;
 import com.jyyd.gate.model.UserModel;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface UserLoginMapper {
             "from db_personal as per , cor_user as u where " +
             "per.per_id = u.per_id  and per.per_name = #{perName}")
     UserModel selectUser(@Param("perName") String perName);
+
+
 }
