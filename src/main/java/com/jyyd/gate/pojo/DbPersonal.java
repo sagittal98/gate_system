@@ -1,29 +1,46 @@
 package com.jyyd.gate.pojo;
 
+import com.jyyd.gate.model.LicenceModel;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class DbPersonal implements Serializable {
+    /* 人事id */
     private Long perId;
-
+    /* 姓名 */
     private String perName;
-
+    /* 性别 */
     private String perSex;
-
+    /* 出生 */
     private Date perBirth;
-
+    /* 身份证 */
     private String perIdcard;
-
+    /* 婚否 */
     private String perMarriage;
-
+    /* 职位号码 */
     private String perJobNumber;
-
+    /* 电话 */
     private String perPhone;
-
+    /* 座机 */
     private String perSpecialPhone;
-
+    /* 创建时间 */
     private Date perCreateTime;
 
+
+    @Contract(pure = true)
+    public DbPersonal() {
+    }
+
+    public DbPersonal(@NotNull LicenceModel licenceModel) {
+        // 人员姓名
+        this.perName = licenceModel.getPerName();
+        // 手机号码
+        this.perPhone = licenceModel.getPerPhone();
+        this.perCreateTime = new Date(System.currentTimeMillis());
+    }
 
     @Override
     public String toString() {

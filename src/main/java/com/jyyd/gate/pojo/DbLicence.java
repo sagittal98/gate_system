@@ -4,19 +4,24 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class DbLicence implements Serializable {
+    // 车牌号id
     private Long licId;
-
+    // 车牌号
     private String licNumber;
-
+    // 车牌有效起时间
     private Date licStartDate;
-
+    // 车牌有效止时间
     private Date licEndDate;
-
+    // 车辆序号
     private Long carNumber;
-
+    // 车辆备注
     private String carRemark;
-
+    // 用户id
     private Long corUserId;
+    // 品牌id
+    private Long carModelId;
+    // 类型id
+    private Long carTypeId;
 
 
     @Override
@@ -35,8 +40,29 @@ public class DbLicence implements Serializable {
                 carRemark + '\"' +
                 ",\"corUserId\":" +
                 corUserId +
+                ",\"carModelId\":" +
+                carModelId +
+                ",\"carTypeId\":" +
+                carTypeId +
                 '}';
     }
+
+    public Long getCarModelId() {
+        return carModelId;
+    }
+
+    public void setCarModelId(Long carModelId) {
+        this.carModelId = carModelId;
+    }
+
+    public Long getCarTypeId() {
+        return carTypeId;
+    }
+
+    public void setCarTypeId(Long carTypeId) {
+        this.carTypeId = carTypeId;
+    }
+
 
     private static final long serialVersionUID = 1L;
 

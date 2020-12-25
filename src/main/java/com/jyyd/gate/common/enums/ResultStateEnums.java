@@ -20,7 +20,12 @@ public enum ResultStateEnums {
     //密码修改成功
     CHANGE_SUCCESSFUL(4005,"密码修改成功"),
     //密码修改失败
-    CHANGE_FAILED(4006,"密码修改失败");
+    CHANGE_FAILED(4006,"密码修改失败"),
+    // 车牌登记成功
+    LICENCE_REGISTER_SUCCESSFUL(4004,"车牌登记成功"),
+    // 账户注册成功
+    ACCOUNT_REGISTER_SUCCESSFUL(4007,"账户注册成功")
+    ;
 
 
     private int state;

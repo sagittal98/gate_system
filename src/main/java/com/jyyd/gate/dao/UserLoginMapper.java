@@ -3,7 +3,6 @@ package com.jyyd.gate.dao;
 import com.jyyd.gate.model.UserModel;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -22,6 +21,38 @@ public interface UserLoginMapper {
             "from db_personal as per , cor_user as u where " +
             "per.per_id = u.per_id  and per.per_name = #{perName}")
     UserModel selectUser(@Param("perName") String perName);
+
+
+    /**
+     * 写入人事信息
+     * @param personal  目标人事
+     */
+    @Insert("insert into db_personal( " +
+            "per_name,per_sex,per_birth,per_idcard,per_marriage,per_job_number,per_phone,per_special_phone,per_create_time" +
+            " )" +
+            "VALUES(" +
+            "#{personal.perName}," +
+            "#{personal.perSex}," +
+            "#{personal.perBirth}," +
+            "#{personal.perIdcard}," +
+            "#{personal.perMarriage}," +
+            "#{personal.perJobNumber}," +
+            "#{personal.perPhone}," +
+            "#{personal.perSpecialPhone}," +
+            "#{personal.perCreateTime}" +
+            ")")
+    @Options(useGeneratedKeys = true,keyProperty = "personal.perId",keyColumn = "per_id")
+    void insertPersonal(@Param("personal") DbPersonal personal);
+
+    @Insert("insert into cor_user(" +
+            "per_id,add_id" +
+            ")" +
+            " values (" +
+            "#{corUser.perId}," +
+            "#{corUser.addId}" +
+            ")")
+    @Options(useGeneratedKeys = true,keyProperty = "corUser.corUserId",keyColumn = "cor_user_id")
+    void insertUser(@Param("corUser")CorUser corUser);
 
 
 }

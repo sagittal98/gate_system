@@ -1,17 +1,31 @@
 package com.jyyd.gate.pojo;
 
+import org.jetbrains.annotations.Contract;
+
 import java.io.Serializable;
 
 public class CorUser implements Serializable {
+    /* 用户id */
     private Long corUserId;
-
+    /* 角色id */
     private Long roleId;
-
+    /* 个人信息id */
     private Long perId;
-
+    /* 住址id */
     private Long addId;
-
+    /* 用户密码 */
     private String password;
+
+
+    @Contract(pure = true)
+    public CorUser() {
+    }
+
+    @Contract(pure = true)
+    public CorUser(Long perId, Long addId) {
+        this.perId = perId;
+        this.addId = addId;
+    }
 
     private static final long serialVersionUID = 1L;
 

@@ -26,9 +26,8 @@ class UserLoginServiceImplTest {
 
     @Test
     void testSelectUser() {
-
-        UserModel userModel = new UserModel("超级管理员", "1234568");
-        Result<Boolean> booleanResult = userLoginService.selectUser(userModel);
-        System.out.println(booleanResult);
+        UserModel userModel = new UserModel("超级管理员", "123456");
+        Result<UserModel> userModelResult = userLoginService.selectUser(userModel);
+        System.out.println(userModelResult);
     }
 }
