@@ -16,7 +16,11 @@ public enum ResultStateEnums {
     // 账户密码错误
     ACCOUNT_PASSWORD_WRONG(4002, "账户密码错误"),
     // 登录成功
-    LOGIN_SUCCESSFUL(4003, "登录成功");
+    LOGIN_SUCCESSFUL(4003, "登录成功"),
+    //密码修改成功
+    CHANGE_SUCCESSFUL(4005,"密码修改成功"),
+    //密码修改失败
+    CHANGE_FAILED(4006,"密码修改失败");
 
 
     private int state;
