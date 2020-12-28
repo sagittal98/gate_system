@@ -50,7 +50,6 @@
         <!-- 启用是为了推迟文件解析，以便捕获文件大小异常 -->
         <property name="resolveLazily" value="true"/>
     </bean>
-
     <!--	拦截器配置-->
     <mvc:interceptors>
         <mvc:interceptor>
@@ -58,5 +57,17 @@
             <bean class="com.jyyd.gate.common.interceptor.Interceptor"/><!--创建我们自定义拦截器对象，指定执行我们自定义的Intercepter拦截器-->
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-methods="GET,POST,PUT,POST,DELETE"
+                     allowed-headers="*"
+                     allow-credentials="true"
+                     max-age="3600" />
+    </mvc:cors>
+
+
+
 
 </beans>
