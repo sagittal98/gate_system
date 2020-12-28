@@ -23,7 +23,7 @@ public class Interceptor implements HandlerInterceptor {
         logger.info("【日志提醒】进入request请求前身份验证！");
         logger.info("【日志提醒】获取请求名！");
         //        获取请求头token
-        String token = httpServletRequest.getHeader("Authorization");
+       /* String token = httpServletRequest.getHeader("Authorization");
         if(token.equals("login")){
             // 判断路径是否含有login
             // 含有则开放
@@ -32,7 +32,7 @@ public class Interceptor implements HandlerInterceptor {
             int index = pathInfo.indexOf("/login/");
             return index != -1;
         }
-        System.out.println(token);
+        System.out.println(token);*/
         return true;
     }
 

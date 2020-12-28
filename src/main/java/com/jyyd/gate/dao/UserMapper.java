@@ -17,9 +17,9 @@ public interface UserMapper {
      * 查询用户及密码
      * @return  返回一个集合list
      */
-    @Select("SELECT per.per_name,u.password   " +
-            "from db_personal as per , cor_user as u where " +
-            "per.per_id = u.per_id  and per.per_name = #{perName}")
+    @Select("SELECT u.cor_user_id,role.role_level,per.per_name,u.password   " +
+            "from db_personal as per , cor_user as u , db_role as role where " +
+            "per.per_id = u.per_id and u.role_id = role.role_id  and per.per_name = #{perName}")
     UserModel selectUser(@Param("perName") String perName);
 
     /*

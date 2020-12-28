@@ -7,7 +7,6 @@ import com.jyyd.gate.model.UserModel;
 import com.jyyd.gate.pojo.DbAddress;
 import com.jyyd.gate.pojo.DbPersonal;
 import com.jyyd.gate.service.UserService;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
