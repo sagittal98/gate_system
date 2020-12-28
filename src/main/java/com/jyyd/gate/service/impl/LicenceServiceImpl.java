@@ -3,7 +3,7 @@ package com.jyyd.gate.service.impl;
 import com.jyyd.gate.common.enums.ResultStateEnums;
 import com.jyyd.gate.dao.AddressMapper;
 import com.jyyd.gate.dao.LicenceMapper;
-import com.jyyd.gate.dao.UserLoginMapper;
+import com.jyyd.gate.dao.UserMapper;
 import com.jyyd.gate.model.LicenceModel;
 import com.jyyd.gate.model.Result;
 import com.jyyd.gate.model.UserModel;
@@ -25,29 +25,29 @@ import org.springframework.stereotype.Service;
 public class LicenceServiceImpl implements LicenceService {
 
     private final LicenceMapper licenceMapper;
-    private final UserLoginMapper userLoginMapper;
     private final AddressMapper addressMapper;
+    private final UserMapper userMapper;
 
     @Contract(pure = true)
-    public LicenceServiceImpl(LicenceMapper licenceMapper, UserLoginMapper userLoginMapper, AddressMapper addressMapper) {
+    public LicenceServiceImpl(LicenceMapper licenceMapper, AddressMapper addressMapper, UserMapper userMapper) {
         this.licenceMapper = licenceMapper;
-        this.userLoginMapper = userLoginMapper;
         this.addressMapper = addressMapper;
+        this.userMapper = userMapper;
     }
 
     @Override
     public Result<Boolean> insertLicence(@NotNull LicenceModel licenceModel) {
         /* 1. 查询用户是否存在 */
-        UserModel userModel = userLoginMapper.selectUser(licenceModel.getPerName());
+        UserModel userModel = userMapper.selectUser(licenceModel.getPerName());
         if (userModel == null) {
             // 用户不存在，需要注册
             /* 2. 用户存在，因此需要注册 */
             DbPersonal dbPersonal = new DbPersonal(licenceModel);
             DbAddress dbAddress = new DbAddress(licenceModel);
-            userLoginMapper.insertPersonal(dbPersonal);
+            userMapper.insertPersonal(dbPersonal);
             addressMapper.insertAddress(dbAddress);
             CorUser corUser = new CorUser(dbPersonal.getPerId(), dbAddress.getAddId());
-            userLoginMapper.insertUser(corUser);
+            userMapper.insertUser(corUser);
             licenceModel.setCorUserId(corUser.getCorUserId());
             licenceMapper.insertLicence(licenceModel);
             return Result.success(true, ResultStateEnums.LICENCE_REGISTER_SUCCESSFUL);
