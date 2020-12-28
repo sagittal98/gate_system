@@ -11,17 +11,15 @@ import org.apache.ibatis.annotations.Param;
  * @create 2020-12-25
  */
 public interface AddressMapper {
-
     @Insert("insert into db_address(" +
-            "country,province,city,add_informatino" +
+            "country,province,city,add_information" +
             ")" +
             " values (" +
             "#{address.country}," +
             "#{address.province}," +
             "#{address.city}," +
-            "#{address.addInformatino}" +
+            "#{address.addInformation}" +
             ")")
     @Options(useGeneratedKeys = true,keyProperty = "address.addId",keyColumn = "add_id")
     void insertAddress(@Param("address") DbAddress address);
-
 }

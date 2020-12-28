@@ -21,7 +21,7 @@ public interface UserService {
     /*
     * 修改用户密码
     * */
-    Result<Boolean> updatePassWord(String passWord,Long id);
+    Result<Boolean> updatePassWord(String passWord,Long corUserId);
 
     /**
      * 注册用户

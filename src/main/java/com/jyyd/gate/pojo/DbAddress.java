@@ -16,7 +16,7 @@ public class DbAddress implements Serializable {
 
     private String city;
 
-    private String addInformatino;
+    private String addInformation;
 
     @Contract(pure = true)
     public DbAddress() {
@@ -31,7 +31,7 @@ public class DbAddress implements Serializable {
         this.country = split[0];
         this.province = split[1];
         this.city = split[2];
-        this.addInformatino = split[3];
+        this.addInformation = split[3];
     }
 
     @Override
@@ -44,8 +44,8 @@ public class DbAddress implements Serializable {
                 province + '\"' +
                 ",\"city\":\"" +
                 city + '\"' +
-                ",\"addInformatino\":\"" +
-                addInformatino + '\"' +
+                ",\"addInformation\":\"" +
+                addInformation + '\"' +
                 '}';
     }
 
@@ -83,11 +83,11 @@ public class DbAddress implements Serializable {
         this.city = city == null ? null : city.trim();
     }
 
-    public String getAddInformatino() {
-        return addInformatino;
+    public String getAddInformation() {
+        return addInformation;
     }
 
-    public void setAddInformatino(String addInformatino) {
-        this.addInformatino = addInformatino == null ? null : addInformatino.trim();
+    public void setAddInformation(String addInformation) {
+        this.addInformation = addInformation == null ? null : addInformation.trim();
     }
 }
