@@ -25,8 +25,8 @@ public interface UserMapper {
     /*
      * 修改用户密码
      * */
-    @Update("update cor_user set PASSWORD=#{passWord} where cor_user_id=#{id}")
-    void updatePassword(@Param("passWord") String passWord,@Param("id") Long id);
+    @Update("update cor_user set PASSWORD=#{passWord} where cor_user_id=#{corUserId}")
+    void updatePassword(@Param("passWord") String passWord,@Param("corUserId") Long corUserId);
 
 
     /**

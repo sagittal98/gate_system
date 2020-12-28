@@ -60,4 +60,19 @@ public class UserController {
         DbAddress dbAddress = RegUtils.jsonObjectToT(DbAddress.class, addressJsonObject);
         return userService.insertUser(dbPersonal,dbAddress);
     }
+
+    /**
+     * 修改账户密码
+     * @param req
+     * @return
+     */
+    @RequestMapping("updatePassWord")
+    @ResponseBody
+    Result<Boolean> updatePassWord(@NotNull @RequestBody JSONObject req){
+        // String passWord,Long id
+        String passWord = req.getString("passWord");
+        Long corUserId = req.getLong("corUserId");
+        return userService.updatePassWord(passWord,corUserId);
+    }
+
 }

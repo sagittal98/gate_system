@@ -62,8 +62,8 @@ public class UserServiceImpl implements UserService {
     * 修改密码
     * */
     @Override
-    public Result<Boolean> updatePassWord(String passWord, Long id) {
-        userMapper.updatePassword(passWord,id);
+    public Result<Boolean> updatePassWord(String passWord, Long corUserId) {
+        userMapper.updatePassword(passWord,corUserId);
         return Result.success(true, ResultStateEnums.CHANGE_SUCCESSFUL);
     }
 
