@@ -65,6 +65,7 @@ public class UserServiceImpl implements UserService {
     public Result<Boolean> updatePassWord(String passWord, Long id) {
         userMapper.updatePassword(passWord,id);
         return Result.success(true, ResultStateEnums.CHANGE_SUCCESSFUL);
+
     }
 
 
