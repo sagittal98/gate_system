@@ -1,22 +1,28 @@
 package com.jyyd.gate.service.impl;
 
-import com.jyyd.gate.model.Result;
-import com.jyyd.gate.service.UserService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Author:yangbiao
  * @Describe
- * @Create 2020-12-25
+ * @Create 2020-12-28
  */
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = {"classpath*:spring/*.xml"})
 class UserServiceImplTest {
 
+    @Test
+    void selectUser() {
+        String test = "[1,2,3,4,5]";
+        String substring = test.substring(1, test.length() - 1);
+        String[] split = substring.split(",");
+        ArrayList<Integer> integers = new ArrayList<>();
+        for (String s : split){
+            integers.add(Integer.valueOf(s));
+            System.out.println(s);
+        }
+        System.out.println(integers);
+    }
 }

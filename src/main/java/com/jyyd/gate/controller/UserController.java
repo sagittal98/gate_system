@@ -2,11 +2,14 @@ package com.jyyd.gate.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jyyd.gate.common.regular.RegUtils;
+import com.jyyd.gate.model.LicenceModel;
 import com.jyyd.gate.model.Result;
 import com.jyyd.gate.model.UserModel;
 import com.jyyd.gate.pojo.DbAddress;
 import com.jyyd.gate.pojo.DbPersonal;
+import com.jyyd.gate.service.LicenceService;
 import com.jyyd.gate.service.UserService;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +28,11 @@ public class UserController {
 
     private final UserService userService;
 
+
     @Contract(pure = true)
-    public UserController(UserService userService) {
+    public UserController(UserService userService, LicenceService licenceService) {
         this.userService = userService;
+
     }
 
 
@@ -50,11 +55,11 @@ public class UserController {
     * */
     @RequestMapping("updatePassWord")
     @ResponseBody
-    Result<Boolean> updatePassWord(@NotNull @RequestBody JSONObject req){
-
-        return null;
+    Result<Boolean> updatePassWord(@NotNull @RequestBody JSONObject req) throws Exception {
+        String passWord = req.getString("passWord");
+        long id = req.getLongValue("id");
+        return userService.updatePassWord(passWord,id);
     }
-
 
     /**
      * 注册用户
