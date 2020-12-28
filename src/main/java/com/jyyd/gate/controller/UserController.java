@@ -74,5 +74,4 @@ public class UserController {
         Long corUserId = req.getLong("corUserId");
         return userService.updatePassWord(passWord,corUserId);
     }
-
 }
